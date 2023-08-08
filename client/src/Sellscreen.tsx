@@ -24,7 +24,7 @@ export function Sellscreen() {
 
   // sale/cart state
   const [cartArray, setCartArray] = useState([] as cartItem[])
-
+  console.log(cartArray)
   const cartArrayWithProductData = cartArray.map((item) => {
     const productDetails = getProductById(item.id)!
     return {
@@ -89,6 +89,7 @@ export function Sellscreen() {
     setCartArray([])
   }
 
+  // update cart subtotals
   const cartSubTotals = cartArrayWithProductData.map((item) => {
     return item.quantity * item.price
   })
@@ -97,6 +98,16 @@ export function Sellscreen() {
 
   cartSubTotals.forEach((num) => {
     cartTotal += num
+  })
+
+  // update cart quantity
+  const cartQty = cartArrayWithProductData.map((item) => {
+    return item.quantity
+  })
+  let totalQty = 0
+
+  cartQty.forEach((qty) => {
+    return (totalQty += qty)
   })
 
   return (
@@ -128,7 +139,7 @@ export function Sellscreen() {
             <div className="payButtonDiv">
               <div className="buttonLeftDiv">
                 <p>Pay</p>
-                <p className="totalQty">{cartArray.length} items</p>
+                <p className="totalQty">{totalQty} items</p>
               </div>
               <div className="buttonRightDiv">
                 <p className="totalToPay">${cartTotal.toFixed(2)}</p>

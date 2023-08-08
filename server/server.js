@@ -22,7 +22,7 @@ server.get('/', async (req, res) => {
   res.json(response.data)
 })
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 server.listen(PORT, () => {
   // eslint-disable-next-line no-console
