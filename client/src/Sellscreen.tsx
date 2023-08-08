@@ -18,7 +18,6 @@ export interface cartItemWithProductData {
 
 export function Sellscreen() {
   const allProducts = useFetchProducts()
-  console.log(allProducts)
 
   const getProductById = (id: number) =>
     allProducts.find((item) => item.id === id)
@@ -53,13 +52,13 @@ export function Sellscreen() {
     )
     if (checkIndex !== -1) {
       // shouldn't be mutating original array?
-      // update copy of cartArray
-      const copiedArray = [...cartArray]
-      copiedArray[checkIndex].quantity++
-      setCartArray(copiedArray)
+      // update copy of cartArray:
+      // const copiedArray = [...cartArray]
+      // copiedArray[checkIndex].quantity++
+      // setCartArray(copiedArray)
 
-      // cartArray[checkIndex].quantity++
-      // setCartArray([...cartArray])
+      cartArray[checkIndex].quantity++
+      setCartArray([...cartArray])
     } else {
       setCartArray([...cartArray, newCartItem])
     }
