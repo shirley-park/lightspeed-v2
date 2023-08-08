@@ -24,7 +24,7 @@ export function Sellscreen() {
 
   // sale/cart state
   const [cartArray, setCartArray] = useState([] as cartItem[])
-  console.log(cartArray)
+
   const cartArrayWithProductData = cartArray.map((item) => {
     const productDetails = getProductById(item.id)!
     return {
